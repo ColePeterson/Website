@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Cool Page</title>
+        <link rel="stylesheet" href ="css01.css"/>
+        <script type="text/javascript" src="jquery-3.4.0.js"></script>
+
+    </head>
+    <body>
+           
+        <header>
+            <h2>Shader Creator</h2>
+        </header>
+
+        <section>
+            <shdrWin>
+                <canvas id="canvas" width="1200" height="675"></canvas>
+            </shdrWin>
+            <srcEditor>
+
+<textarea class = "srcEdit" id = "fsSource0" spellcheck="false">
+precision mediump float;
+uniform vec2 resolution;
+uniform float time;
+
+vec2 R;
+vec2 U;
+
+void main()
+{
+        R = resolution.xy;
+        U = gl_FragCoord.xy;
+
+        vec2 nv = vec2(U.xy - 0.5*R.xy)/R.y;
+        vec2 uv = U / R;
+
+        gl_FragColor = vec4(sin(uv.x), cos(uv.y*2.), 0.2, 1.);
+}
+ </textarea>
+
+
+                <p></p>
+                <button class="button" onClick = "Recompile()">Compile</button>
+                <button onCLick = "fb1()">Buffer 1</button>
+                <button onCLick = "fb2()">Buffer 2</button>
+            </srcEditor>
+
+<textarea class = "srcEdit" id = "fsSource1" spellcheck="false">
+precision mediump float;
+uniform vec2 resolution;
+uniform float time;
+
+vec2 R;
+vec2 U;
+
+void main()
+{
+        R = resolution.xy;
+        U = gl_FragCoord.xy;
+
+        vec2 nv = vec2(U.xy - 0.5*R.xy)/R.y;
+        vec2 uv = U / R;
+
+        gl_FragColor = vec4(1., 0., 0., 1.);
+}
+</textarea>
+
+
+        </section>
+     
+
+
+    <footer>
+        <p>By Cole Peterson.</p>
+    </footer>
+            
+        <script type="x-shader" src="Frag0.js" id = "fs0"></script>
+        <script type="x-shader" src="VertexShader.js" id = "vs"></script>
+        <script src="WebGL.js" id = "wgl"></script>
+        <script src="Interface.js" id = "wgl"></script>
+
+    </body>
+
+
+
+</html>
