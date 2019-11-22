@@ -1,2 +1,0 @@
-# Website
-Personal website project
